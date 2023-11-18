@@ -2,7 +2,7 @@ import mygui as g
 
 root = g.MyApp()
 root.withdraw()
-root.title("Tkinter App Template")
+root.title("Aplikasi Citra Terderau")
 
 root.deiconify()
 root.mainloop()

@@ -1,5 +1,4 @@
 import tkinter as tk
-from tkinter import messagebox
 from tkinter import ttk
 from tkinter import filedialog
 from PIL import ImageTk, Image
@@ -8,8 +7,6 @@ import os
 
 # Get the current working directory
 cwdi = str(os.getcwd())+"/img/"
-
-pokemon_info = [['Bulbasaur', 'Grass', '318'], ['Ivysaur', 'Grass', '405'], ['Venusaur', 'Grass', '525'], ['Charmander', 'Fire', '309'], ['Charmeleon', 'Fire', '405'], ['Charizard', 'Fire', '534'], ['Squirtle', 'Water', '314'], ['Wartortle', 'Water', '405'], ['Blastoise', 'Water', '530'], ['Caterpie', 'Bug', '195'], ['Metapod', 'Bug', '205'], ['Butterfree', 'Bug', '395'], ['Weedle', 'Bug', '195'], ['Kakuna', 'Bug', '205'], ['Beedrill', 'Bug', '395'], ['Pidgey', 'Normal', '251'], ['Pidgeotto', 'Normal', '349'], ['Pidgeot', 'Normal', '479'], ['Rattata', 'Normal', '253'], ['Raticate', 'Normal', '413'], ['Spearow', 'Normal', '262'], ['Fearow', 'Normal', '442'], ['Ekans', 'Poison', '288'], ['Arbok', 'Poison', '448'], ['Pikachu', 'Electric', '320'], ['Raichu', 'Electric', '485'], ['Sandshrew', 'Ground', '300'], ['Sandslash', 'Ground', '450'], ['Nidoran?', 'Poison', '275'], ['Nidorina', 'Poison', '365'], ['Nidoqueen', 'Poison', '505'], ['Nidoran?', 'Poison', '273'], ['Nidorino', 'Poison', '365'], ['Nidoking', 'Poison', '505'], ['Clefairy', 'Fairy', '323'], ['Clefable', 'Fairy', '483'], ['Vulpix', 'Fire', '299'], ['Ninetales', 'Fire', '505'], ['Jigglypuff', 'Normal', '270'], ['Wigglytuff', 'Normal', '435'], ['Zubat', 'Poison', '245'], ['Golbat', 'Poison', '455'], ['Oddish', 'Grass', '320'], ['Gloom', 'Grass', '395'], ['Vileplume', 'Grass', '490'], ['Paras', 'Bug', '285'], ['Parasect', 'Bug', '405'], ['Venonat', 'Bug', '305'], ['Venomoth', 'Bug', '450'], ['Diglett', 'Ground', '265'], ['Dugtrio', 'Ground', '425'], ['Meowth', 'Normal', '290'], ['Persian', 'Normal', '440'], ['Psyduck', 'Water', '320'], ['Golduck', 'Water', '500'], ['Mankey', 'Fighting', '305'], ['Primeape', 'Fighting', '455'], ['Growlithe', 'Fire', '350'], ['Arcanine', 'Fire', '555'], ['Poliwag', 'Water', '300'], ['Poliwhirl', 'Water', '385'], ['Poliwrath', 'Water', '510'], ['Abra', 'Psychic', '310'], ['Kadabra', 'Psychic', '400'], ['Alakazam', 'Psychic', '500'], ['Machop', 'Fighting', '305'], ['Machoke', 'Fighting', '405'], ['Machamp', 'Fighting', '505'], ['Bellsprout', 'Grass', '300'], ['Weepinbell', 'Grass', '390'], ['Victreebel', 'Grass', '490'], ['Tentacool', 'Water', '335'], ['Tentacruel', 'Water', '515'], ['Geodude', 'Rock', '300'], ['Graveler', 'Rock', '390'], ['Golem', 'Rock', '495'], ['Ponyta', 'Fire', '410'], ['Rapidash', 'Fire', '500'], ['Slowpoke', 'Water', '315'], ['Slowbro', 'Water', '490'], ['Magnemite', 'Electric', '325'], ['Magneton', 'Electric', '465'], ["Farfetch'd", 'Normal', '377'], ['Doduo', 'Normal', '310'], ['Dodrio', 'Normal', '470'], ['Seel', 'Water', '325'], ['Dewgong', 'Water', '475'], ['Grimer', 'Poison', '325'], ['Muk', 'Poison', '500'], ['Shellder', 'Water', '305'], ['Cloyster', 'Water', '525'], ['Gastly', 'Ghost', '310'], ['Haunter', 'Ghost', '405'], ['Gengar', 'Ghost', '500'], ['Onix', 'Rock', '385'], ['Drowzee', 'Psychic', '328'], ['Hypno', 'Psychic', '483'], ['Krabby', 'Water', '325'], ['Kingler', 'Water', '475'], ['Voltorb', 'Electric', '330'], ['Electrode', 'Electric', '490'], ['Exeggcute', 'Grass', '325'], ['Exeggutor', 'Grass', '530'], ['Cubone', 'Ground', '320'], ['Marowak', 'Ground', '425'], ['Hitmonlee', 'Fighting', '455'], ['Hitmonchan', 'Fighting', '455'], ['Lickitung', 'Normal', '385'], ['Koffing', 'Poison', '340'], ['Weezing', 'Poison', '490'], ['Rhyhorn', 'Ground', '345'], ['Rhydon', 'Ground', '485'], ['Chansey', 'Normal', '450'], ['Tangela', 'Grass', '435'], ['Kangaskhan', 'Normal', '490'], ['Horsea', 'Water', '295'], ['Seadra', 'Water', '440'], ['Goldeen', 'Water', '320'], ['Seaking', 'Water', '450'], ['Staryu', 'Water', '340'], ['Starmie', 'Water', '520'], ['Scyther', 'Bug', '500'], ['Jynx', 'Ice', '455'], ['Electabuzz', 'Electric', '490'], ['Magmar', 'Fire', '495'], ['Pinsir', 'Bug', '500'], ['Tauros', 'Normal', '490'], ['Magikarp', 'Water', '200'], ['Gyarados', 'Water', '540'], ['Lapras', 'Water', '535'], ['Ditto', 'Normal', '288'], ['Eevee', 'Normal', '325'], ['Vaporeon', 'Water', '525'], ['Jolteon', 'Electric', '525'], ['Flareon', 'Fire', '525'], ['Porygon', 'Normal', '395'], ['Omanyte', 'Rock', '355'], ['Omastar', 'Rock', '495'], ['Kabuto', 'Rock', '355'], ['Kabutops', 'Rock', '495'], ['Aerodactyl', 'Rock', '515'], ['Snorlax', 'Normal', '540'], ['Articuno', 'Ice', '580'], ['Zapdos', 'Electric', '580'], ['Moltres', 'Fire', '580'], ['Dratini', 'Dragon', '300'], ['Dragonair', 'Dragon', '420'], ['Dragonite', 'Dragon', '600'], ['Mewtwo', 'Psychic', '680'], ['Mew', 'Psychic', '600']]
 
 frame_styles = {"relief": "groove",
                 "bd": 3, "bg": "#BEB2A7",
@@ -22,7 +19,7 @@ class MenuBar(tk.Menu):
         menu_file = tk.Menu(self, tearoff=0)
         self.add_cascade(label="Menu", menu=menu_file)
         menu_file.add_command(label="Testing", command=lambda: parent.show_frame(Testing))
-        menu_file.add_command(label="Riwayat", command=lambda: parent.show_frame(Riwayat))
+        menu_file.add_command(label="Riwayat")# command=lambda: parent.show_frame(Riwayat))
         menu_file.add_separator()
         menu_file.add_command(label="Exit Application", command=lambda: parent.Quit_application())
 
@@ -72,11 +69,14 @@ class Testing(GUI):
     def __init__(self, parent, controller):
         GUI.__init__(self, parent)
         global data
-        
         data = os.listdir(cwdi+"ori")
         data.sort()
-        label1 = tk.Label(self.main_frame, font=("Verdana", 20), text="Pilih Gambar atau Tambah Gambar")
+
+        labelv = tk.Label(text="Hai")
+        label1 = tk.Label(self.main_frame, font=("Verdana", 20), text="Testing Aplikasi")
         label1.pack(side="top")
+        s = ttk.Separator(self.main_frame, orient='horizontal')
+        s.pack(fill='x')
         label2 = tk.Label(self.main_frame, font=("Verdana", 10), bg="#BEB2A7", text="Pilih gambar di list bawah ini")
         label2.pack(side="top")
         Lbox1 = tk.Listbox(self.main_frame)
@@ -85,7 +85,8 @@ class Testing(GUI):
         button1 = tk.Button(self.main_frame, text="Tambah Gambar", bg="green", command=lambda: Add_img())
         button1.pack()
         w1 = tk.Label(self.main_frame)
-        w1.pack(side="top")
+        w1.pack()
+        button1 = tk.Button(self.main_frame, text="Lihat Hasil", bg="blue", command=lambda: Hasil())
 
         def onselect(evt):
             # Note here that T kinter passes an event object to onselect()
@@ -99,6 +100,8 @@ class Testing(GUI):
             gambar = ImageTk.PhotoImage(image=gambararr)
             w1.configure(image=gambar)
             w1.gambar = gambar
+            labelv.configure(text=value)
+            button1.pack()
             # print('You selected item %d: "%s"' % (index, value))
         Lbox1.bind('<<ListboxSelect>>', onselect)
 
@@ -106,10 +109,10 @@ class Testing(GUI):
             Lbox1.delete(0, tk.END)
             data = os.listdir(cwdi+"ori")
             data.sort()
-            print(data)
             for i in range(len(data)):
                 Lbox1.insert(i+1, data[i])
         Refresh_Data()
+
         def Add_img():
             file_path = filedialog.askopenfilename(title="Select a File", filetypes=[("Image files", ("*.png","*.jpg","*.jpeg"))])
             # print(file_path)
@@ -127,27 +130,61 @@ class Testing(GUI):
                         break
             cv2.imwrite(cwdi+"ori/"+imgname, gambarcv2)
             Refresh_Data()
+        
+        def Hasil():
+            img_ori = cv2.imread(cwdi+"ori/"+str(labelv.cget("text")))
+            denoised_image = cv2.fastNlMeansDenoisingColored(img_ori, None, h=15, hColor=10, templateWindowSize=7, searchWindowSize=21)
+            cv2.imwrite(cwdi+"hasil/ori.png", img_ori)
+            cv2.imwrite(cwdi+"hasil/denoise.png", denoised_image)
+            OpenNewWindow()
 
-class OpenNewWindow(tk.Tk):
+
+class OpenNewWindow(tk.Toplevel):
 
     def __init__(self, *args, **kwargs):
 
-        tk.Tk.__init__(self, *args, **kwargs)
+        tk.Toplevel.__init__(self, *args, **kwargs)
 
         main_frame = tk.Frame(self)
         main_frame.pack_propagate(0)
         main_frame.pack(fill="both", expand="true")
         main_frame.grid_rowconfigure(0, weight=1)
         main_frame.grid_columnconfigure(0, weight=1)
-        self.title("Here is the Title of the Window")
+        self.title("Result Denoised Image")
         self.geometry("500x500")
         self.resizable(0, 0)
 
-        frame1 = ttk.LabelFrame(main_frame, text="This is a ttk LabelFrame")
-        frame1.pack(expand=True, fill="both")
-
-        label1 = tk.Label(frame1, font=("Verdana", 20), text="OpenNewWindow Page")
+        label1 = tk.Label(main_frame, font=("Verdana", 20), text="Result")
         label1.pack(side="top")
+        s = ttk.Separator(main_frame, orient='horizontal')
+        s.pack(fill='x')
+
+        frame1 = tk.Frame(main_frame)
+        frame1.pack()
+        frame2 = tk.Frame(main_frame)
+        frame2.pack()
+
+        label2 = tk.Label(frame1, text="Original Image")
+        label2.pack(side="left")
+        label3 = tk.Label(frame1, text="Denoised Image")
+        label3.pack(side="right")
+        gambararr = Image.open(cwdi+"hasil/ori.png")
+        gambar = ImageTk.PhotoImage(image=gambararr)
+        labeli1 = tk.Label(frame2, image=gambar)
+        labeli1.pack(side="left")
+        labeli1.image = gambar
+        gambararr = Image.open(cwdi+"hasil/denoise.png")
+        gambar = ImageTk.PhotoImage(image=gambararr)
+        labeli2 = tk.Label(frame2, image=gambar)
+        labeli2.pack(side="right")
+        labeli2.image = gambar
+        
+        # PSNR
+        img1 = cv2.imread(cwdi+"hasil/ori.png")
+        img2 = cv2.imread(cwdi+"hasil/denoise.png")
+        psnr = cv2.PSNR(img1, img2)
+        label4 = tk.Label(main_frame, text=f"PSNR = {psnr:0.2f}")
+        label4.pack(side="bottom")
 
 class Riwayat(GUI):  # inherits from the GUI class
     def __init__(self, parent, controller):
@@ -212,16 +249,16 @@ class Riwayat(GUI):  # inherits from the GUI class
         tv1.configure(yscrollcommand=treescroll.set)
         treescroll.pack(side="right", fill="y")
 
-        def Load_data():
-            for row in pokemon_info:
-                tv1.insert("", "end", values=row)
+        # def Load_data():
+        #     for row in pokemon_info:
+        #         tv1.insert("", "end", values=row)
 
-        def Refresh_data():
-            # Deletes the data in the current treeview and reinserts it.
-            tv1.delete(*tv1.get_children())  # *=splat operator
-            Load_data()
+        # def Refresh_data():
+        #     # Deletes the data in the current treeview and reinserts it.
+        #     tv1.delete(*tv1.get_children())  # *=splat operator
+        #     Load_data()
 
-        Load_data()
+        # Load_data()
 
 
 class PageOne(GUI):
