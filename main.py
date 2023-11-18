@@ -4,5 +4,5 @@ root = g.MyApp()
 root.withdraw()
 root.title("Tkinter App Template")
 
-root.deiconify()
+root.deiconify
 root.mainloop()
